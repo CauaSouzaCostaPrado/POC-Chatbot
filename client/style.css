@@ -1,0 +1,313 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+body {
+  background: white;
+  min-width:350px;        /* Suppose you want minimum width of 1000px */
+  width: auto !important;  /* Firefox will set width as auto */
+  width:350px;            /* As IE6 ignores !important it will set width as 1000px; */
+}
+
+#header {
+  width: 100vw;
+  height: 10vh;
+  background: #000000e7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#header > button {
+  background-image: url(./settings.svg);
+  background-color: transparent;
+  border: none;
+  height: 30px;
+  width: 30px;
+  margin-left: 30px;
+  cursor: pointer;
+}
+@media screen and (min-width: 650px) {
+  #header > h1 {
+    margin-left: 20px;
+    color: rgb(174, 168, 168);
+    font-size: 2.5rem;
+    font-family: suisse,sans-serif!important;
+  }
+  .logo {
+    margin-left: 5vh;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 100%;
+    background-color: gray;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #header > h1 {
+    margin-left: 20px;
+    color: rgb(174, 168, 168);
+    font-size: 2rem;
+    font-family: suisse,sans-serif!important;
+  }
+  .logo {
+    margin-left: 3vh;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 100%;
+    background-color: gray;
+  }
+}
+
+
+
+#app {
+  box-shadow: inset 0px 3px 3px 0px rgba(55,33,87,.1607843137254902);
+  width: 100vw;
+  height: 90vh;
+  background: rgb(52 53 65);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#chat_container {
+  padding: 20px;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  padding-bottom: 20px;
+  scroll-behavior: smooth;
+}
+
+/* hides scrollbar */
+#chat_container::-webkit-scrollbar {
+  display: none;
+}
+
+.chatwrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.chatwrapperai {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.wrapper {
+  max-width: 80%;
+  padding: 15px;
+  /* display: flex; */
+  background: rgb(68 70 84);
+  border-radius: 20px;
+}
+
+.ai {
+  background: rgb(68 70 84);
+}
+
+.chat {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: row;
+  /* flex-di */
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.profile {
+  width: 36px;
+  height: 36px;
+  border-radius: 100%;
+
+  background: #181818e6;
+  color: gray;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ai .profile {
+  background: #181818e6;
+  color: gray;
+}
+
+.profile img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.messageai {
+  flex: 0.5;
+
+  color: gray;
+  font-size: 20px;
+
+  max-width: 100%;
+  overflow-x: scroll;
+
+  /*
+   *     space refers to any spaces, tabs, or newline characters that are used to format the CSS code
+   * specifies how white space within an element should be handled. It is similar to the "pre" value, which tells the browser to treat all white space as significant and to preserve it exactly as it appears in the source code.
+   * The pre-wrap value allows the browser to wrap long lines of text onto multiple lines if necessary.
+   * The default value for the white-space property in CSS is "normal". This tells the browser to collapse multiple white space characters into a single space, and to wrap text onto multiple lines as needed to fit within its container.
+  */
+  white-space: pre-wrap;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.message {
+  flex: 1;
+  margin-top: 5px;
+  color: #dddddd;
+  font-size: 20px;
+
+  max-width: 100%;
+  overflow-x: scroll;
+
+  /*
+   * white space refers to any spaces, tabs, or newline characters that are used to format the CSS code
+   * specifies how white space within an element should be handled. It is similar to the "pre" value, which tells the browser to treat all white space as significant and to preserve it exactly as it appears in the source code.
+   * The pre-wrap value allows the browser to wrap long lines of text onto multiple lines if necessary.
+   * The default value for the white-space property in CSS is "normal". This tells the browser to collapse multiple white space characters into a single space, and to wrap text onto multiple lines as needed to fit within its container.
+  */
+  white-space: pre-wrap;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* hides scrollbar */
+.message::-webkit-scrollbar {
+  display: none;
+}
+
+form {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+textarea {
+  width: 100%;
+
+  color: #dddddd;
+  font-size: 18px;
+
+  padding: 10px;
+  background: transparent;
+  border-radius: 5px;
+  border: none;
+  outline: 1px solid #aaaaaa;
+  resize: none;
+}
+
+form > button {
+  background-image: url(./next.svg);
+  background-color: transparent;
+  border: none;
+  height: 40px;
+  padding: 20px;
+  width: 40px;
+}
+
+form > button:hover {
+  cursor: pointer;
+}
+
+form img {
+  width: 30px;
+  height: 30px;
+}
+
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #1f1c1c;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  width: 30%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #3f3939;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-form {
+  margin: 50px 0;
+  justify-content: center;
+  display: grid;
+  align-items: center;
+}
+.modal-item {
+  width: 100%
+}
+.modal-item > p {
+  color: white;
+  margin: 40px 0 15px 0;
+}
+.modal-item > input, select {
+  font-size:medium; 
+  width: 100%;
+  height: 40px;
+  padding: 0 5px;
+}
+.train-model {
+  font-size:medium; 
+  margin-top: 40px;
+  width: 100%;
+  height: 40px;
+}

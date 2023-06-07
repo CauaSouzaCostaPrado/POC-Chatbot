@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>POC ChatBot</title>
+  </head>
+  <body onload="onGetFiles()">
+    <div id="header">
+      <img src="/icon.webp" class="logo" alt="sidebar-logo">
+      <h1>POC Chatbot</h1>
+      <!-- <button id="setting"></button> -->
+      
+    </div>
+    <div id="app">
+      <div id="chat_container"></div>
+
+      <form>
+        <textarea name="prompt" rows="2" cols="2" required id="chatBox"></textarea>
+        <button type="submit">
+      </form>
+    </div>
+    
+    <script type="module" src="script.js"></script>
+      
+  </body>
+</html>
