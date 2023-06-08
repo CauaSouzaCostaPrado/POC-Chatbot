@@ -3,6 +3,15 @@ import user from "./user.svg";
 
 const form = document.querySelector("form");
 const chatContainer = document.querySelector("#chat_container");
+const chatlog = [];
+
+if(localStorage.getItem('chatlog'))
+{
+  let log = JSON.parse(localStorage.getItem('chatlog'))
+  chatlog.push(log)
+}
+
+chatContainer.innerHTML = chatlog
 
 let loadInterval;
 
@@ -75,20 +84,35 @@ function chatStripe(isAi, value, uniqueId) {
     `;
 }
 
+function savelog(content) {
+  if(localStorage.getItem('chatlog') == null) {
+    const tmp = []
+    tmp.push(content)
+    localStorage.setItem('chatlog', JSON.stringify(tmp))
+  }
+  else {
+    const tmp = JSON.parse(localStorage.getItem('chatlog'))
+    const tmp1 = [...tmp, content]
+    localStorage.setItem('chatlog', JSON.stringify(tmp1))
+  }
+}
+
 const handleSubmit = async (e) => {
   e.preventDefault();
 
   const data = new FormData(form);
   // user's chatstripe
-  chatContainer.innerHTML += chatStripe(false, data.get("prompt"));
-
+  chatlog.push(chatStripe(false, data.get("prompt")))
+  savelog(chatStripe(false, data.get("prompt")))
+  chatContainer.innerHTML += chatlog[chatlog.length-1];
   // to clear the textarea input
   form.reset();
-
   // bot's chatstripe
   const uniqueId = generateUniqueId();
-  chatContainer.innerHTML += chatStripe(true, " ", uniqueId);
-
+  chatlog.push(chatStripe(true, " ", uniqueId))
+  // console.log(chatStripe(true, " ", uniqueId), "contenet2----------")
+  // savelog(chatStripe(true, " ", uniqueId))
+  chatContainer.innerHTML += chatlog[chatlog.length-1];
   // to focus scroll to the bottom
   chatContainer.scrollTop = chatContainer.scrollHeight;
 
@@ -110,16 +134,17 @@ const handleSubmit = async (e) => {
 
   clearInterval(loadInterval);
   messageDiv.innerHTML = " ";
+  // chatlog.push(messageDiv)
 
   if (response.ok) {
     const data = await response.json();
-    console.log(data)
     const parsedData = data.result.trim(); // trims any trailing spaces/'\n'
-
+    chatlog.pop()
+    chatlog.push(chatStripe(true, parsedData, uniqueId))
+    savelog(chatStripe(true, parsedData, uniqueId))
     typeText(messageDiv, parsedData);
   } else {
     const err = await response.text();
-
     messageDiv.innerHTML = "Something went wrong";
   }
 };

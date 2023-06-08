@@ -22,8 +22,8 @@ llm = OpenAI(temperature=0, openai_api_key=API_KEY)
 
 # Create db chain
 QUERY = """
-If the question is not familiar with you. Please generate "Do you explain more about?"
-Given an input question, first create a syntactically correct mysql query to run, then look at the results of the query and return the answer.
+If the question is not familiar with you. Please generate "תוכל להסביר יותר בפירוט? אני לא מצליח להבין מה אתה רוצה."
+Given an input question, first create a syntactically correct mysql query to run, then look at the results of the query and return the answer in Hebrew. Must answer only Hebrew.
 Use the following format:
 
 Question: Question here
